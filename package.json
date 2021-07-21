@@ -2,12 +2,9 @@
   "name": "snamoah.dev",
   "version": "1.0.0",
   "private": true,
-  "description": "snamoah",
-  "keywords": [
-    "gatsby"
-  ],
+  "author": "Samuel Nkoom Amoah <sa.am@programmer.net>",
   "scripts": {
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -23,6 +20,7 @@
     "gatsby-plugin-react-helmet": "^4.10.0",
     "gatsby-plugin-sharp": "^3.10.2",
     "gatsby-plugin-sitemap": "^4.6.0",
+    "gatsby-plugin-typescript": "^3.10.0",
     "gatsby-source-filesystem": "^3.10.0",
     "gatsby-transformer-sharp": "^3.10.0",
     "react": "^17.0.1",
