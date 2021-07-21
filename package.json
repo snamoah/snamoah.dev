@@ -9,7 +9,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "lint": "eslint . --ext .ts,.tsx,.js --cache"
+    "lint": "eslint . --ext .ts,.tsx,.js",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
   },
   "husky": {
     "hooks": {
