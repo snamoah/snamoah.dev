@@ -1,8 +1,8 @@
-export default {
+const siteConfig = {
   title: 'Samuel Amoah',
   titleShort: 'snamoah',
   url: process.env.ROOT_URL || 'https://snamoah.dev',
-  logo: '/logo.svg',
+  logo: 'src/images/logo.svg',
   description:
     'Visit my website and take a look at some of my articles on Javascript, Software Architecture and Design Patterns.',
   lang: 'en', // Language Tag on <html> element
@@ -19,3 +19,5 @@ export default {
   github: 'https://github.com/snamoah',
   linkedIn: 'https://linkedin.com/in/snamoah',
 }
+
+export default siteConfig

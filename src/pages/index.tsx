@@ -155,7 +155,7 @@ const Footer = styled.footer`
   width: 100%;
 `
 
-export default () => {
+const IndexPage = () => {
   return (
     <>
       <Global styles={globalStyles} />
@@ -190,7 +190,12 @@ export default () => {
         </Aside>
         <Main>
           <Content>
-            <h1>Hello! 👋🏾</h1>
+            <h1>
+              Hello!{' '}
+              <span role="img" aria-label="Waving Hand">
+                👋🏾
+              </span>
+            </h1>
             <SubHeader>
               I'm Samuel Amoah. I'm a software engineer passionate about
               Javascript, Software Architecture and Design Patterns.
@@ -218,3 +223,5 @@ export default () => {
     </>
   )
 }
+
+export default IndexPage;

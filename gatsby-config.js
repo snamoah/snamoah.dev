@@ -1,7 +1,7 @@
-require('ts-node').register({ files: true });
+require('ts-node').register({ files: true })
 
 const { resolve } = require('path')
-const { default: site } = require('./config/site');
+const { default: site } = require('./config/site')
 
 module.exports = {
   siteMetadata: {
@@ -15,25 +15,26 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        "name": site.title,
-        "short_name": site.titleShort,
-        "description": site.description,
-        "start_url": "/",
-        "lang": site.lang,
-        "display": "standalone",
-        "theme_color": "#ffffff",
-        "background_color": "#ffffff",
-        "icons": [
+        name: site.title,
+        short_name: site.titleShort,
+        description: site.description,
+        start_url: '/',
+        lang: site.lang,
+        display: 'standalone',
+        theme_color: '#ffffff',
+        background_color: '#ffffff',
+        icon: 'static/favicons/android-chrome-512x512.png',
+        icons: [
           {
-              "src": "/favicons/android-chrome-192x192.png",
-              "sizes": "192x192",
-              "type": "image/png"
+            src: '/favicons/android-chrome-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
           },
           {
-              "src": "/favicons/android-chrome-512x512.png",
-              "sizes": "512x512",
-              "type": "image/png"
-          }
+            src: '/favicons/android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
         ],
       },
     },
