@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { css, Global } from '@emotion/react';
 import { StaticImage as Image } from 'gatsby-plugin-image';
 import theme from '../../config/theme';
+import { Github, LinkedIn, Twitter } from '../components/icons';
 
 import '../fonts/fonts.css';
 
@@ -11,6 +12,7 @@ const globalStyles = css`
     margin: 0;
     font-family: 'Quicksand', sans-serif;
     font-size: 18px;
+    color: #1F2126;
   }
   
   h1 {
@@ -59,26 +61,32 @@ const SubHeader = styled.p`
   color: ${theme.colors.DARK_GREY}
 `
 
-const Menu = styled.ul`
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  font-weight: 600;
-`
+interface MenuProps {
+  dotted?: boolean;
+}
 
 const MenuItem = styled.li`
   display: inline-block;
   margin: 0 1em;
+`
 
-  &:not(:last-child)::after {
-    content: '';
-    margin-left: 2em;
-    display: inline-block;
-    border-radius: 50%;
-    background-color: ${theme.colors.PRIMARY};
-    width: 12px;
-    height: 12px;
-  }
+const Menu = styled.ul<MenuProps>`
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+
+  ${props => props.dotted && `
+    ${MenuItem}:not(:last-child)::after {
+      content: '';
+      margin-left: 2em;
+      display: inline-block;
+      border-radius: 50%;
+      background-color: ${theme.colors.PRIMARY};
+      width: 12px;
+      height: 12px;
+    }
+  `}
 `
 
 const Footer = styled.footer`
@@ -105,17 +113,17 @@ export default () => {
             <SubHeader>
               I'm Samuel Amoah. I'm a software engineer passionate about Javascript, Software Architecture and Design Patterns.
             </SubHeader>
-              <Menu>
+              <Menu dotted>
                 <MenuItem>Blog</MenuItem>
                 <MenuItem>Projects</MenuItem>
               </Menu>
           </Content>
           <Footer>
-              <ul>
-                <li>Twitter</li>
-                <li>Github</li>
-                <li>LinkedIn</li>
-              </ul>
+              <Menu>
+                <MenuItem><Twitter /></MenuItem>
+                <MenuItem><Github /></MenuItem>
+                <MenuItem><LinkedIn /></MenuItem>
+              </Menu>
           </Footer>
         </Main>
       </Container>
