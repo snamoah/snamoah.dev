@@ -18,8 +18,14 @@ const globalStyles = css`
 
   h1 {
     font-family: 'Noto Sans';
-    font-size: 64px;
+    font-size: 48px;
     margin-bottom: 0;
+  }
+
+  ${Device.DESKTOP} {
+    h1 {
+      font-family: 64px;
+    }
   }
 `
 
@@ -79,6 +85,11 @@ const Content = styled.div`
   height: 100%;
   margin-top: -2rem;
   padding: 0 6em;
+
+  ${Device.MOBILE} {
+    padding: 0 2em;
+    text-align: center;
+  }
 `
 
 const SubHeader = styled.p`
