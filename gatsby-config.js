@@ -7,6 +7,9 @@ module.exports = {
   siteMetadata: {
     siteUrl: site.url,
     title: site.tite,
+    lang: site.lang,
+    keywords: site.keywords,
+    description: site.description,
   },
   plugins: [
     'gatsby-plugin-image',

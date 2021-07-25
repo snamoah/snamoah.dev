@@ -3,10 +3,11 @@ import styled from '@emotion/styled'
 import { css, Global } from '@emotion/react'
 import { StaticImage as Image } from 'gatsby-plugin-image'
 import theme from '../../config/theme'
+import Seo from '../components/Seo'
+import { Device } from '../utils/breakpoints'
 import { Github, LinkedIn, Twitter } from '../components/icons'
 
 import '../fonts/fonts.css'
-import { Device } from '../utils/breakpoints'
 
 const globalStyles = css`
   body {
@@ -158,6 +159,7 @@ const Footer = styled.footer`
 const IndexPage = () => {
   return (
     <>
+      <Seo />
       <Global styles={globalStyles} />
       <Container>
         <Aside>
