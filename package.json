@@ -18,11 +18,11 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
-      "yarn lint -- --fix"
-    ],
     "*.+(js|ts|tsx|js|jsx|css|md|graphql|mdx|json)": [
       "yarn format"
+    ],
+    "*.{ts,tsx,js,jsx}": [
+      "yarn lint -- --fix"
     ]
   },
   "dependencies": {
