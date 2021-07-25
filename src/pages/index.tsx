@@ -91,8 +91,10 @@ const Menu = styled.ul<MenuProps>`
 
 const Footer = styled.footer`
   position: absolute;
-  bottom: 0;
+  bottom: .5em;
   text-align: center;
+  display: inline-block;
+  width: 100%;
 `
 
 export default () => {
