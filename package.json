@@ -4,6 +4,7 @@
   "private": true,
   "author": "Samuel Nkoom Amoah <sa.am@programmer.net>",
   "scripts": {
+    "prepare": "husky install",
     "dev": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
@@ -12,17 +13,10 @@
     "lint": "eslint . --ext .ts,.tsx,.js",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.+(js|ts|tsx|js|jsx|css|md|graphql|mdx|json)": [
+      "yarn lint -- --fix",
       "yarn format"
-    ],
-    "*.{ts,tsx,js,jsx}": [
-      "yarn lint -- --fix"
     ]
   },
   "dependencies": {
