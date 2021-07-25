@@ -1,3 +1,3 @@
-export * from './Linkedin';
-export * from './Github';
-export * from './Twitter';
+export * from './Linkedin'
+export * from './Github'
+export * from './Twitter'

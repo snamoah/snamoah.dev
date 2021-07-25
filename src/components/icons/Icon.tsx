@@ -1,15 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-const ICON_SIZE = 24;
+const ICON_SIZE = 24
 
 export interface IconProps {
-    size?: number;
+  size?: number
 }
 
-export type IconType = (props: IconProps) => JSX.Element;
+export type IconType = (props: IconProps) => JSX.Element
 
-const Icon = (IconComponent: IconType) => () => (
-    <IconComponent size={ICON_SIZE} />
-)
+const Icon = (IconComponent: IconType) => () =>
+  <IconComponent size={ICON_SIZE} />
 
-export default Icon;
+export default Icon

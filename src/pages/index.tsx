@@ -1,21 +1,21 @@
 import React from 'react'
-import styled from '@emotion/styled';
-import { css, Global } from '@emotion/react';
-import { StaticImage as Image } from 'gatsby-plugin-image';
-import theme from '../../config/theme';
-import { Github, LinkedIn, Twitter } from '../components/icons';
+import styled from '@emotion/styled'
+import { css, Global } from '@emotion/react'
+import { StaticImage as Image } from 'gatsby-plugin-image'
+import theme from '../../config/theme'
+import { Github, LinkedIn, Twitter } from '../components/icons'
 
-import '../fonts/fonts.css';
-import { Device } from '../utils/breakpoints';
+import '../fonts/fonts.css'
+import { Device } from '../utils/breakpoints'
 
 const globalStyles = css`
   body {
     margin: 0;
     font-family: 'Quicksand', sans-serif;
     font-size: 18px;
-    color: #1F2126;
+    color: #1f2126;
   }
-  
+
   h1 {
     font-family: 'Noto Sans';
     font-size: 64px;
@@ -81,14 +81,13 @@ const Content = styled.div`
   padding: 0 6em;
 `
 
-
 const SubHeader = styled.p`
-  color: ${theme.colors.DARK_GREY}
+  color: ${theme.colors.DARK_GREY};
 `
 
 interface MenuProps {
-  dotted?: boolean;
-  link?: boolean;
+  dotted?: boolean
+  link?: boolean
 }
 
 const MenuItem = styled.li`
@@ -110,7 +109,9 @@ const Menu = styled.ul<MenuProps>`
   margin: 0;
   font-weight: 600;
 
-  ${props => props.dotted && `
+  ${(props) =>
+    props.dotted &&
+    `
     ${MenuItem}:not(:last-child)::after {
       content: '';
       margin-left: 2em;
@@ -122,7 +123,9 @@ const Menu = styled.ul<MenuProps>`
     }
   `}
 
-  ${props => props.link && `
+  ${(props) =>
+    props.link &&
+    `
     ${MenuItem} {
       cursor: pointer;
     }
@@ -135,7 +138,7 @@ const Menu = styled.ul<MenuProps>`
 
 const Footer = styled.footer`
   position: absolute;
-  bottom: .5em;
+  bottom: 0.5em;
   text-align: center;
   display: inline-block;
   width: 100%;
@@ -147,54 +150,60 @@ export default () => {
       <Global styles={globalStyles} />
       <Container>
         <Aside>
-          <Image 
+          <Image
             src="../images/sam.png"
-            loading='eager'
-            objectFit='contain'
-            placeholder='tracedSVG'
-            css={
-              css`
-                ${Device.NOT_DESKTOP} {
-                  display: none;
-                }
-              `
-            }
-            alt='Picture of Samuel Amoah' />
-          <Avatar css={
-            css`
+            loading="eager"
+            objectFit="contain"
+            placeholder="tracedSVG"
+            css={css`
+              ${Device.NOT_DESKTOP} {
+                display: none;
+              }
+            `}
+            alt="Picture of Samuel Amoah"
+          />
+          <Avatar
+            css={css`
               ${Device.NOT_DESKTOP} {
                 display: inline-block;
               }
-            `
-          }>
+            `}
+          >
             <Image
               src="../images/sam_mobile.png"
               loading="eager"
               placeholder="tracedSVG"
-              alt="Picture of Samuel Amoah" />
+              alt="Picture of Samuel Amoah"
+            />
           </Avatar>
         </Aside>
         <Main>
           <Content>
             <h1>Hello! 👋🏾</h1>
             <SubHeader>
-              I'm Samuel Amoah. I'm a software engineer passionate about Javascript, Software Architecture and Design Patterns.
+              I'm Samuel Amoah. I'm a software engineer passionate about
+              Javascript, Software Architecture and Design Patterns.
             </SubHeader>
-              <Menu dotted>
-                <MenuItem>Blog</MenuItem>
-                <MenuItem>Projects</MenuItem>
-              </Menu>
+            <Menu dotted>
+              <MenuItem>Blog</MenuItem>
+              <MenuItem>Projects</MenuItem>
+            </Menu>
           </Content>
           <Footer>
-              <Menu link>
-                <MenuItem><Twitter /></MenuItem>
-                <MenuItem><Github /></MenuItem>
-                <MenuItem><LinkedIn /></MenuItem>
-              </Menu>
+            <Menu link>
+              <MenuItem>
+                <Twitter />
+              </MenuItem>
+              <MenuItem>
+                <Github />
+              </MenuItem>
+              <MenuItem>
+                <LinkedIn />
+              </MenuItem>
+            </Menu>
           </Footer>
         </Main>
       </Container>
     </>
   )
 }
-
