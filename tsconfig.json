@@ -1,7 +1,7 @@
 {
   "include": ["./src/**/*"],
   "compilerOptions": {
-    "types": ["@emotion/react/types/css-prop"],
+    "types": ["@types/node", "@emotion/react/types/css-prop"],
     "target": "esnext",
     "module": "commonjs",
     "lib": ["dom", "es2020"],

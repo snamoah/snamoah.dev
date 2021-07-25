@@ -1,9 +1,12 @@
+require('ts-node').register({ files: true });
+
 const { resolve } = require('path')
+const { default: site } = require('./config/site');
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.yourdomain.tld',
-    title: 'snamoah',
+    siteUrl: site.url,
+    title: site.tite,
   },
   plugins: [
     'gatsby-plugin-image',
@@ -12,7 +15,26 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: 'src/images/icon.png',
+        "name": site.title,
+        "short_name": site.titleShort,
+        "description": site.description,
+        "start_url": "/",
+        "lang": site.lang,
+        "display": "standalone",
+        "theme_color": "#ffffff",
+        "background_color": "#ffffff",
+        "icons": [
+          {
+              "src": "/favicons/android-chrome-192x192.png",
+              "sizes": "192x192",
+              "type": "image/png"
+          },
+          {
+              "src": "/favicons/android-chrome-512x512.png",
+              "sizes": "512x512",
+              "type": "image/png"
+          }
+        ],
       },
     },
     'gatsby-plugin-mdx',
