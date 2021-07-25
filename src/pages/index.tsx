@@ -6,6 +6,7 @@ import theme from '../../config/theme';
 import { Github, LinkedIn, Twitter } from '../components/icons';
 
 import '../fonts/fonts.css';
+import { Device } from '../utils/breakpoints';
 
 const globalStyles = css`
   body {
@@ -22,13 +23,51 @@ const globalStyles = css`
   }
 `
 
-interface ContainerProps {
-  screen?: boolean;
-}
-
-const Container = styled.div<ContainerProps>`
+const Container = styled.div`
   display: flex;
-  height: ${props => props.screen ? '100vh' : 'inherit'};
+  min-height: 100vh;
+  ${Device.DESKTOP} {
+    height: 100vh;
+  }
+
+  ${Device.NOT_DESKTOP} {
+    flex-direction: column;
+  }
+`
+
+const Aside = styled.aside`
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  overflow: hidden;
+  align-items: flex-end;
+  justify-content: flex-end;
+  ${Device.DESKTOP} {
+    width: 40%;
+  }
+
+  ${Device.NOT_DESKTOP} {
+    align-items: center;
+    justify-content: center;
+  }
+`
+
+const Avatar = styled.div`
+  display: none;
+  position: relative;
+  width: 30%;
+  height: 30%;
+  background-color: ${theme.colors.LIGHT_GREY};
+  clip-path: circle(50%);
+`
+
+const Main = styled.main`
+  position: relative;
+  flex-grow: 4;
+  ${Device.DESKTOP} {
+    width: 60%;
+    flex-grow: 1;
+  }
 `
 
 const Content = styled.div`
@@ -37,25 +76,11 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   margin-top: -2rem;
   padding: 0 6em;
 `
 
-const Aside = styled.aside`
-  display: flex;
-  flex-grow: 1;
-  width: 40%;
-  overflow: hidden;
-  align-items: flex-end;
-  justify-content: flex-end;
-`
-
-const Main = styled.main`
-  position: relative;
-  flex-grow: 1;
-  width: 60%;
-`
 
 const SubHeader = styled.p`
   color: ${theme.colors.DARK_GREY}
@@ -70,6 +95,13 @@ const MenuItem = styled.li`
   display: inline-block;
   margin: 0 1em;
 
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 `
 
 const Menu = styled.ul<MenuProps>`
@@ -113,13 +145,34 @@ export default () => {
   return (
     <>
       <Global styles={globalStyles} />
-      <Container screen>
+      <Container>
         <Aside>
           <Image 
             src="../images/sam.png"
             loading='eager'
+            objectFit='contain'
             placeholder='tracedSVG'
+            css={
+              css`
+                ${Device.NOT_DESKTOP} {
+                  display: none;
+                }
+              `
+            }
             alt='Picture of Samuel Amoah' />
+          <Avatar css={
+            css`
+              ${Device.NOT_DESKTOP} {
+                display: inline-block;
+              }
+            `
+          }>
+            <Image
+              src="../images/sam_mobile.png"
+              loading="eager"
+              placeholder="tracedSVG"
+              alt="Picture of Samuel Amoah" />
+          </Avatar>
         </Aside>
         <Main>
           <Content>
