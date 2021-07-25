@@ -19,7 +19,10 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
-      "npm run lint -- --fix"
+      "yarn lint -- --fix"
+    ],
+    "*.+(js|ts|tsx|js|jsx|css|md|graphql|mdx)": [
+      "yarn format"
     ]
   },
   "dependencies": {
