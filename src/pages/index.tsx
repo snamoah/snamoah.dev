@@ -63,11 +63,13 @@ const SubHeader = styled.p`
 
 interface MenuProps {
   dotted?: boolean;
+  link?: boolean;
 }
 
 const MenuItem = styled.li`
   display: inline-block;
   margin: 0 1em;
+
 `
 
 const Menu = styled.ul<MenuProps>`
@@ -85,6 +87,16 @@ const Menu = styled.ul<MenuProps>`
       background-color: ${theme.colors.PRIMARY};
       width: 12px;
       height: 12px;
+    }
+  `}
+
+  ${props => props.link && `
+    ${MenuItem} {
+      cursor: pointer;
+    }
+
+    ${MenuItem}:hover {
+      color: ${theme.colors.DARK_GREY};
     }
   `}
 `
@@ -121,7 +133,7 @@ export default () => {
               </Menu>
           </Content>
           <Footer>
-              <Menu>
+              <Menu link>
                 <MenuItem><Twitter /></MenuItem>
                 <MenuItem><Github /></MenuItem>
                 <MenuItem><LinkedIn /></MenuItem>
