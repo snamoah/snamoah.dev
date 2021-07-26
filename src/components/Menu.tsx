@@ -23,11 +23,11 @@ const MenuItem = styled(Link)`
   color: ${theme.colors.BLACK};
   margin: 0 1em;
 
-  &:first-child {
+  &:first-of-type {
     margin-left: 0;
   }
 
-  &:last-child {
+  &:last-of-type {
     margin-right: 0;
   }
 
@@ -42,7 +42,7 @@ const Menu = styled.nav<StyledMenuProps>`
   ${(props) =>
     props.dotted &&
     `
-    ${MenuItem}:not(:last-child)::after {
+    ${MenuItem}:not(:last-of-type)::after {
       content: '';
       margin-left: 2em;
       display: inline-block;
