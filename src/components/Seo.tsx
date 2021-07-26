@@ -19,7 +19,7 @@ const Seo: React.FC = () => {
         }
       }
     `,
-  );
+  )
 
   const keywords = site.keywords.join(' ')
 
@@ -42,4 +42,4 @@ const Seo: React.FC = () => {
   )
 }
 
-export default Seo;
+export default Seo
