@@ -3,12 +3,12 @@ import styled from '@emotion/styled'
 import Link from './Link'
 import theme from '../../config/theme'
 
-interface MenuItemProps {
+export interface MenuItemProps {
   name: ReactNode
   link: string
 }
 
-interface MenuProps {
+export interface MenuProps {
   dotted?: boolean
   link?: boolean
   active?: string
@@ -21,7 +21,7 @@ const MenuItem = styled(Link)`
   display: inline-block;
   text-decoration: none;
   color: ${theme.colors.BLACK};
-  margin: 0 1em;
+  margin: 0 2em;
 
   &:first-of-type {
     margin-left: 0;
@@ -38,29 +38,33 @@ const MenuItem = styled(Link)`
 
 const Menu = styled.nav<StyledMenuProps>`
   font-weight: 600;
-
-  ${(props) =>
-    props.dotted &&
-    `
-    ${MenuItem}:not(:last-of-type)::after {
-      content: '';
-      margin-left: 2em;
-      display: inline-block;
-      border-radius: 50%;
-      background-color: ${theme.colors.PRIMARY};
-      width: 12px;
-      height: 12px;
-    }
-  `}
 `
 
-const MenuComponent: React.FC<MenuProps> = ({ items, ...menuProps }) => {
+const Dot = styled.div`
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: ${theme.colors.PRIMARY};
+`
+
+const MenuComponent: React.FC<MenuProps> = ({
+  items,
+  dotted,
+  ...menuProps
+}) => {
+  const lastMenuItemIndex = items.length - 1
+
   return (
     <Menu {...menuProps}>
       {items.map((menuItem, index) => (
-        <MenuItem key={index} to={menuItem.link}>
-          {menuItem.name}
-        </MenuItem>
+        <React.Fragment key={index}>
+          <MenuItem key={index} to={menuItem.link}>
+            {menuItem.name}
+          </MenuItem>
+
+          {dotted && index !== lastMenuItemIndex && <Dot />}
+        </React.Fragment>
       ))}
     </Menu>
   )
