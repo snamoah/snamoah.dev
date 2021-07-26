@@ -1,22 +1,25 @@
 @font-face {
-    font-family: 'Quicksand';
-    font-weight: 400;
-    src: url('Quicksand-Regular.woff') format('woff'),
-        url('Quicksand-Regular.woff2') format('woff2');
+  font-family: 'Quicksand';
+  font-weight: 400;
+  src: url('Quicksand-Regular.woff') format('woff'),
+    url('Quicksand-Regular.woff2') format('woff2');
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Quicksand';
-    font-style: bold;
-    font-weight: 600;
-    src: url('Quicksand-SemiBold.woff') format('woff'),
-        url('Quicksand-SemiBold.woff2') format('woff2');
+  font-family: 'Quicksand';
+  font-style: bold;
+  font-weight: 600;
+  src: url('Quicksand-SemiBold.woff') format('woff'),
+    url('Quicksand-SemiBold.woff2') format('woff2');
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Noto Sans';
-    font-weight: bold;
-    font-weight: 700;
-    src: url('NotoSans-Bold.woff') format('woff'),
-        url('NotoSans-Bold.woff2') format('woff2');
+  font-family: 'Noto Sans';
+  font-weight: bold;
+  font-weight: 700;
+  src: url('NotoSans-Bold.woff') format('woff'),
+    url('NotoSans-Bold.woff2') format('woff2');
+  font-display: swap;
 }

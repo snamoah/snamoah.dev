@@ -6,7 +6,7 @@ const { default: site } = require('./config/site')
 module.exports = {
   siteMetadata: {
     siteUrl: site.url,
-    title: site.tite,
+    title: site.title,
     lang: site.lang,
     keywords: site.keywords,
     description: site.description,
