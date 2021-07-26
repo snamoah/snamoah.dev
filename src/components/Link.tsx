@@ -8,20 +8,20 @@ interface LinkProps {
 }
 
 const Link: React.FC<LinkProps> = ({ to, children, ...otherProps }) => {
-  const isInternal = /^\/*/.test(to)
+  const isExternalLink = /^https?:\/\//.test(to)
 
-  if (isInternal) {
+  if (isExternalLink) {
     return (
-      <GatsbyLink to={to} {...otherProps}>
+      <a href={to} target="_blank" {...otherProps}>
         {children}
-      </GatsbyLink>
+      </a>
     )
   }
 
   return (
-    <a href={to} {...otherProps}>
+    <GatsbyLink to={to} {...otherProps}>
       {children}
-    </a>
+    </GatsbyLink>
   )
 }
 
