@@ -15,10 +15,16 @@ const siteConfig = {
     'TypeScript Training',
   ],
 
+  //author
+  bio: `
+    I'm Samuel Amoah. I'm a software engineer passionate about
+    Javascript, Software Architecture and Design Patterns.
+  `,
+
   // social
   twitter: 'https://twitter.com/snamoah',
   github: 'https://github.com/snamoah',
   linkedIn: 'https://linkedin.com/in/snamoah',
-}
+} as const
 
 export default siteConfig

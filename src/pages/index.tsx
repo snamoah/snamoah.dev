@@ -1,34 +1,15 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { css, Global } from '@emotion/react'
+import { graphql, useStaticQuery } from 'gatsby'
 import { StaticImage as Image } from 'gatsby-plugin-image'
 import theme from '../../config/theme'
 import Seo from '../components/Seo'
+import Menu from '../components/Menu'
 import { Device } from '../utils/breakpoints'
+import { globalStyles } from '../utils/styles'
+import { GraphqlQuery } from '../types/graphql'
 import { Github, LinkedIn, Twitter } from '../components/icons'
-
-import '../fonts/fonts.css'
-
-const globalStyles = css`
-  body {
-    margin: 0;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 18px;
-    color: #1f2126;
-  }
-
-  h1 {
-    font-family: 'Noto Sans';
-    font-size: 48px;
-    margin-bottom: 0;
-  }
-
-  ${Device.DESKTOP} {
-    h1 {
-      font-family: 64px;
-    }
-  }
-`
 
 const Container = styled.div`
   display: flex;
@@ -97,57 +78,6 @@ const SubHeader = styled.p`
   color: ${theme.colors.DARK_GREY};
 `
 
-interface MenuProps {
-  dotted?: boolean
-  link?: boolean
-}
-
-const MenuItem = styled.li`
-  display: inline-block;
-  margin: 0 1em;
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
-`
-
-const Menu = styled.ul<MenuProps>`
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  font-weight: 600;
-
-  ${(props) =>
-    props.dotted &&
-    `
-    ${MenuItem}:not(:last-child)::after {
-      content: '';
-      margin-left: 2em;
-      display: inline-block;
-      border-radius: 50%;
-      background-color: ${theme.colors.PRIMARY};
-      width: 12px;
-      height: 12px;
-    }
-  `}
-
-  ${(props) =>
-    props.link &&
-    `
-    ${MenuItem} {
-      cursor: pointer;
-    }
-
-    ${MenuItem}:hover {
-      color: ${theme.colors.DARK_GREY};
-    }
-  `}
-`
-
 const Footer = styled.footer`
   position: absolute;
   bottom: 0.5em;
@@ -156,7 +86,31 @@ const Footer = styled.footer`
   width: 100%;
 `
 
+type IndexPageQuery = GraphqlQuery<{
+  bio: string
+  twitterLink: string
+  githubLink: string
+  linkedInLink: string
+}>
+
+const query = graphql`
+  query IndexPage {
+    site {
+      siteMetadata {
+        bio
+        twitterLink
+        githubLink
+        linkedInLink
+      }
+    }
+  }
+`
+
 const IndexPage = () => {
+  const {
+    site: { siteMetadata: site },
+  } = useStaticQuery<IndexPageQuery>(query)
+
   return (
     <>
       <Seo />
@@ -194,31 +148,42 @@ const IndexPage = () => {
           <Content>
             <h1>
               Hello!{' '}
-              <span role="img" aria-label="Waving Hand">
+              <span role="img" aria-label="Waving Hand: Medium-Dark Skin Ton">
                 👋🏾
               </span>
             </h1>
-            <SubHeader>
-              I'm Samuel Amoah. I'm a software engineer passionate about
-              Javascript, Software Architecture and Design Patterns.
-            </SubHeader>
-            <Menu dotted>
-              <MenuItem>Blog</MenuItem>
-              <MenuItem>Projects</MenuItem>
-            </Menu>
+            <SubHeader>{site.bio}</SubHeader>
+            <Menu
+              dotted
+              items={[
+                {
+                  name: 'Blog',
+                  link: '/blog',
+                },
+                {
+                  name: 'Projects',
+                  link: '/projects',
+                },
+              ]}
+            />
           </Content>
           <Footer>
-            <Menu link>
-              <MenuItem>
-                <Twitter />
-              </MenuItem>
-              <MenuItem>
-                <Github />
-              </MenuItem>
-              <MenuItem>
-                <LinkedIn />
-              </MenuItem>
-            </Menu>
+            <Menu
+              items={[
+                {
+                  name: <Twitter />,
+                  link: site.twitterLink,
+                },
+                {
+                  name: <Github />,
+                  link: site.githubLink,
+                },
+                {
+                  name: <LinkedIn />,
+                  link: site.linkedInLink,
+                },
+              ]}
+            />
           </Footer>
         </Main>
       </Container>

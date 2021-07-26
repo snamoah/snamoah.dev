@@ -11,6 +11,10 @@ module.exports = {
     image: site.ogImage,
     keywords: site.keywords,
     description: site.description,
+    twitterLink: site.twitter,
+    githubLink: site.github,
+    linkedInLink: site.linkedIn,
+    bio: site.bio,
   },
   plugins: [
     'gatsby-plugin-image',
