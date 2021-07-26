@@ -8,6 +8,7 @@ module.exports = {
     siteUrl: site.url,
     title: site.title,
     lang: site.lang,
+    image: site.ogImage,
     keywords: site.keywords,
     description: site.description,
   },

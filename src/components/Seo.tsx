@@ -12,6 +12,7 @@ const Seo: React.FC = () => {
           siteMetadata {
             siteUrl
             title
+            image
             lang
             keywords
             description
@@ -37,6 +38,7 @@ const Seo: React.FC = () => {
       <meta name="og:type" content="website" />
       <meta name="og:title" content={site.title} />
       <meta name="og:description" content={site.description} />
+      <meta name="og:image" content={site.image} />
       <meta name="og:url" content={site.siteUrl} />
     </Helmet>
   )
