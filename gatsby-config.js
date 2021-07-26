@@ -27,6 +27,9 @@ module.exports = {
         theme_color: '#ffffff',
         background_color: '#ffffff',
         icon: 'static/favicons/android-chrome-512x512.png',
+        icon_options: {
+          purpose: 'any maskable',
+        },
         icons: [
           {
             src: '/favicons/android-chrome-192x192.png',
