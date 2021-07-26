@@ -1,26 +1,36 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
+import { GraphqlQuery } from '../types/graphql'
+
+type SeoQuery = GraphqlQuery<{
+  siteUrl: string
+  title: string
+  image: string
+  lang: string
+  keywords: string[]
+  description: string
+}>
+
+const query = graphql`
+  query Seo {
+    site {
+      siteMetadata {
+        siteUrl
+        title
+        image
+        lang
+        keywords
+        description
+      }
+    }
+  }
+`
 
 const Seo: React.FC = () => {
   const {
     site: { siteMetadata: site },
-  } = useStaticQuery(
-    graphql`
-      query Seo {
-        site {
-          siteMetadata {
-            siteUrl
-            title
-            image
-            lang
-            keywords
-            description
-          }
-        }
-      }
-    `,
-  )
+  } = useStaticQuery<SeoQuery>(query)
 
   const keywords = site.keywords.join(' ')
 
