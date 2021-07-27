@@ -23,4 +23,8 @@ export const globalStyles = css`
       font-family: 64px;
     }
   }
+
+  header {
+    color: ${theme.colors.BLACK};
+  }
 `
