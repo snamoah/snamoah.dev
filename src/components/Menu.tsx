@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
 import Link from './Link'
 import theme from '../../config/theme'
+import { Device } from '../utils/breakpoints'
 
 export interface MenuItemProps {
   name: ReactNode
@@ -27,6 +28,10 @@ const MenuItem = styled(Link)`
 
   &:last-of-type {
     margin-right: 0;
+  }
+
+  ${Device.MOBILE} {
+    margin: 0 1em;
   }
 `
 

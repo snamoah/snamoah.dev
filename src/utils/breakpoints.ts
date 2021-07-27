@@ -1,6 +1,6 @@
 export enum Size {
   XS = 528,
-  SM = 768,
+  SM = 767,
   MD = 1023,
 }
 

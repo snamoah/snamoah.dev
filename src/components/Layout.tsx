@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
-import { Global } from '@emotion/react'
+import { css, Global } from '@emotion/react'
 import Menu, { MenuItemProps } from './Menu'
 import { globalStyles } from '../utils/styles'
+import { Device } from '../utils/breakpoints'
 
 interface LayoutProps {
   title: ReactNode
@@ -24,20 +25,32 @@ const menuItems: MenuItemProps[] = [
   },
 ]
 
+const responsiveLayout = css`
+  padding: 0 10rem;
+
+  ${Device.NOT_DESKTOP} {
+    padding: 0 5rem;
+  }
+
+  ${Device.MOBILE} {
+    padding: 0 2rem;
+  }
+`
+
 const Nav = styled.nav`
   text-align: center;
   padding: 0;
   padding-top: 2em;
 `
 const Header = styled.header`
-  padding: 0 10rem;
+  ${responsiveLayout}
+  margin-bottom: 2em;
 `
 const Main = styled.main`
-  padding: 0 10rem;
+  ${responsiveLayout}
 `
 const Footer = styled.footer`
-    background: yellow;
-    padding; 0 10rem;
+  ${responsiveLayout}
 `
 
 const Layout: React.FC<LayoutProps> = ({ title, children }) => {
