@@ -19,8 +19,6 @@ type StyledMenuProps = Omit<MenuProps, 'items'>
 
 const MenuItem = styled(Link)`
   display: inline-block;
-  text-decoration: none;
-  color: ${theme.colors.BLACK};
   margin: 0 2em;
 
   &:first-of-type {
@@ -29,10 +27,6 @@ const MenuItem = styled(Link)`
 
   &:last-of-type {
     margin-right: 0;
-  }
-
-  &:hover {
-    color: ${theme.colors.DARK_GREY};
   }
 `
 
