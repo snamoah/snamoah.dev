@@ -4,6 +4,7 @@ import Layout from '../components/Layout'
 import theme from '../../config/theme'
 import Link from '../components/Link'
 import { Github } from '../components/icons'
+import { Device } from '../utils/breakpoints'
 
 interface Project {
   name: string
@@ -44,7 +45,6 @@ const projects: Project[] = [
 ]
 
 const ProjectCard = styled.article`
-  flex: 1;
   position: relative;
   height: 140px;
   border-radius: 5px;
@@ -52,8 +52,20 @@ const ProjectCard = styled.article`
   margin-bottom: 1em;
   padding: 1em;
 
-  &:not(:nth-of-type(3n + 3)) {
-    margin-right: 1em;
+  ${Device.DESKTOP} {
+    &:not(:nth-of-type(3n + 3)) {
+      margin-right: 1em;
+    }
+  }
+
+  ${Device.NOT_DESKTOP} {
+    &:not(:nth-of-type(2n + 2)) {
+      margin-right: 1em;
+
+      ${Device.MOBILE} {
+        margin-right: 0;
+      }
+    }
   }
 `
 
@@ -61,6 +73,14 @@ const Container = styled.section`
   margin-top: 1em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+
+  ${Device.NOT_DESKTOP} {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  ${Device.MOBILE} {
+    grid-template-columns: none;
+  }
 `
 
 const Header = styled(Link)`
