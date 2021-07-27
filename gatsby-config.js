@@ -1,6 +1,5 @@
 require('ts-node').register({ files: true })
 
-const { resolve } = require('path')
 const { default: site } = require('./config/site')
 
 module.exports = {
@@ -56,15 +55,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'images',
-        path: resolve(__dirname, 'src/images'),
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'pages',
-        path: resolve(__dirname, 'src/pages'),
+        name: 'posts',
+        path: `${__dirname}/content/posts`,
       },
     },
   ],

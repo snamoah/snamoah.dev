@@ -6,12 +6,14 @@ import theme from '../../config/theme'
 interface LinkProps {
   to: string
   children: ReactNode
+  primary?: boolean
   [key: string]: any
 }
 
 const LinkComponent: React.FC<LinkProps> = ({
   to,
   children,
+  primary,
   ...otherProps
 }) => {
   const isExternalLink = /^https?:\/\//.test(to)
@@ -33,10 +35,12 @@ const LinkComponent: React.FC<LinkProps> = ({
 
 const Link = styled(LinkComponent)`
   text-decoration: none;
-  color: ${theme.colors.BLACK};
+  color: ${(props) =>
+    props.primary ? theme.colors.PRIMARY : theme.colors.BLACK};
 
   &:hover {
-    color: ${theme.colors.DARK_GREY};
+    color: ${(props) =>
+      props.primary ? theme.colors.PRIMARY : theme.colors.DARK_GREY};
   }
 `
 

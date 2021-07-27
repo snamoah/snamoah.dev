@@ -5,5 +5,11 @@ module.exports = {
     'plugin:prettier/recommended',
     'prettier',
   ],
+  overrides: [
+    {
+      files: ['*.mdx'],
+      extends: 'plugin:mdx/recommended',
+    },
+  ],
   plugins: ['jsx-a11y'],
 }
