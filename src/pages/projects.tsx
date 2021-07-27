@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import Seo from '../components/Seo'
+import Link from '../components/Link'
 import Layout from '../components/Layout'
 import theme from '../../config/theme'
-import Link from '../components/Link'
 import { Github } from '../components/icons'
 import { Device } from '../utils/breakpoints'
 
@@ -102,6 +103,7 @@ const Actions = styled.div`
 const Projects: React.FC = () => {
   return (
     <>
+      <Seo siteTitle="Projects" />
       <Layout
         title={
           <h1>

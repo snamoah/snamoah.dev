@@ -27,29 +27,40 @@ const query = graphql`
   }
 `
 
-const Seo: React.FC = () => {
+interface SeoProps {
+  siteTitle?: string
+  siteDescription?: string
+  siteImage?: string
+}
+
+const Seo: React.FC<SeoProps> = ({ siteTitle, siteDescription, siteImage }) => {
   const {
     site: { siteMetadata: site },
   } = useStaticQuery<SeoQuery>(query)
 
+  siteTitle = siteTitle ? `${siteTitle} | ${site.title}` : siteTitle
+  siteDescription = siteDescription || site.description
+  siteImage = siteImage || site.image
+
+  const siteUrl = site.siteUrl
   const keywords = site.keywords.join(' ')
 
   return (
     <Helmet>
       <html lang={site.lang} />
-      <title>{site.title}</title>
+      <title>{siteTitle}</title>
 
-      <meta name="description" content={site.description} />
+      <meta name="description" content={siteDescription} />
       <meta name="keywords" content={keywords} />
       <link rel="canonical" href={site.siteUrl} />
 
       {/* Open Graph tags */}
-      <meta name="og:site_name" content={site.title} />
+      <meta name="og:site_name" content={siteTitle} />
       <meta name="og:type" content="website" />
-      <meta name="og:title" content={site.title} />
-      <meta name="og:description" content={site.description} />
-      <meta name="og:image" content={site.image} />
-      <meta name="og:url" content={site.siteUrl} />
+      <meta name="og:title" content={siteTitle} />
+      <meta name="og:description" content={siteDescription} />
+      <meta name="og:image" content={siteImage} />
+      <meta name="og:url" content={siteUrl} />
     </Helmet>
   )
 }

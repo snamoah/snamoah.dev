@@ -18,7 +18,7 @@ const LinkComponent: React.FC<LinkProps> = ({
 
   if (isExternalLink) {
     return (
-      <a href={to} target="_blank" {...otherProps}>
+      <a href={to} target="_blank" rel="noreferrer" {...otherProps}>
         {children}
       </a>
     )
