@@ -1,5 +1,7 @@
 module.exports = {
-  assert: {
-    preset: 'lighthouse:recommended',
+  ci: {
+    assert: {
+      preset: 'lighthouse:no-pwa',
+    },
   },
 }
