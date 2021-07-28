@@ -40,7 +40,7 @@ const Link = styled(LinkComponent)`
 
   &:hover {
     color: ${(props) =>
-      props.primary ? theme.colors.PRIMARY : theme.colors.DARK_GREY};
+      props.primary ? theme.colors.PRIMARY : theme.colors.DARKER_GREY};
   }
 `
 
