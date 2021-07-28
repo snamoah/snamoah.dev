@@ -28,17 +28,26 @@ const query = graphql`
 `
 
 interface SeoProps {
+  blog?: boolean
   siteTitle?: string
   siteDescription?: string
   siteImage?: string
 }
 
-const Seo: React.FC<SeoProps> = ({ siteTitle, siteDescription, siteImage }) => {
+const Seo: React.FC<SeoProps> = ({
+  blog: isBlog,
+  siteTitle,
+  siteDescription,
+  siteImage,
+}) => {
   const {
     site: { siteMetadata: site },
   } = useStaticQuery<SeoQuery>(query)
 
-  siteTitle = siteTitle ? `${siteTitle} | ${site.title}` : siteTitle
+  if (!isBlog) {
+    siteTitle = siteTitle ? `${siteTitle} | ${site.title}` : site.title
+  }
+
   siteDescription = siteDescription || site.description
   siteImage = siteImage || site.image
 
