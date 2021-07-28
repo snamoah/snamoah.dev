@@ -49,7 +49,7 @@ const ProjectCard = styled.article`
   position: relative;
   height: 140px;
   border-radius: 5px;
-  background-color: ${theme.colors.GREY};
+  background-color: ${theme.colors.LIGHT_GREY};
   margin-bottom: 1em;
   padding: 1em;
 
