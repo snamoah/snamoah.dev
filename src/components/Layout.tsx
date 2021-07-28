@@ -17,16 +17,16 @@ const menuItems: MenuItemProps[] = [
   },
   {
     name: 'Projects',
-    link: '/projects',
+    link: '/projects/',
   },
   {
     name: 'Blog',
-    link: '/blog',
+    link: '/blog/',
   },
 ]
 
 const responsiveLayout = css`
-  padding: 0 10rem;
+  padding: 0 15rem;
 
   ${Device.NOT_DESKTOP} {
     padding: 0 5rem;
@@ -50,6 +50,7 @@ const Main = styled.main`
   ${responsiveLayout}
 `
 const Footer = styled.footer`
+  text-align: center;
   ${responsiveLayout}
 `
 
