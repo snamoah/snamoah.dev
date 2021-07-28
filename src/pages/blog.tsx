@@ -29,6 +29,7 @@ const Action = styled.div``
 
 interface BlogPost {
   id: string
+  slug: string
   frontmatter: {
     slug: string
     date: string
@@ -41,8 +42,12 @@ type BlogPostsQuery = GraphqlQuery<BlogPost>
 
 const query = graphql`
   query BlogPosts {
-    allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+    allMdx(
+      filter: { frontmatter: { published: { ne: false } } }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
       nodes {
+        slug
         frontmatter {
           slug
           title
@@ -73,12 +78,12 @@ const Blog: React.FC = () => {
         }
       >
         {posts &&
-          posts.map(({ id, frontmatter: post }) => (
+          posts.map(({ id, slug, frontmatter: post }) => (
             <Article key={id}>
               <Header>{post.title}</Header>
               <Body>{post.description}</Body>
               <Action>
-                <LinkToArticle primary to={`/blog/${post.slug}`}>
+                <LinkToArticle primary to={`/blog/${slug}`}>
                   Read Article
                 </LinkToArticle>
               </Action>
