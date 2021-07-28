@@ -27,6 +27,14 @@ const LinkToArticle = styled(Link)`
 `
 const Action = styled.div``
 
+const NoPosts = styled.div`
+  display: flex
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center
+`
+
 interface BlogPost {
   id: string
   slug: string
@@ -64,6 +72,9 @@ const Blog: React.FC = () => {
   const {
     allMdx: { nodes: posts },
   } = useStaticQuery<BlogPostsQuery>(query)
+
+  const postsExist = posts.length
+
   return (
     <>
       <Seo slug="/blog/" title="Blog" />
@@ -77,7 +88,7 @@ const Blog: React.FC = () => {
           </h1>
         }
       >
-        {posts &&
+        {postsExist ? (
           posts.map(({ id, slug, frontmatter: post }) => (
             <Article key={id}>
               <Header>{post.title}</Header>
@@ -88,7 +99,20 @@ const Blog: React.FC = () => {
                 </LinkToArticle>
               </Action>
             </Article>
-          ))}
+          ))
+        ) : (
+          <NoPosts>
+            No posts yet{' '}
+            <span role="img" aria-label="Pensive Face">
+              😔
+            </span>
+            . First post will be published soon{' '}
+            <span role="img" aria-label="Construction">
+              🚧
+            </span>
+            .
+          </NoPosts>
+        )}
       </Layout>
     </>
   )
