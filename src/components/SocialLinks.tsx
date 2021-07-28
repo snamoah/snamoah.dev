@@ -27,14 +27,20 @@ const SocialLinks = () => {
         {
           name: <Twitter />,
           link: site.twitterLink,
+          title: 'Twitter',
+          ariaLabel: 'Twitter',
         },
         {
           name: <Github />,
           link: site.githubLink,
+          title: 'Github',
+          ariaLabel: 'Github',
         },
         {
           name: <LinkedIn />,
           link: site.linkedInLink,
+          title: 'LinkedIn',
+          ariaLabel: 'LinkedIn',
         },
       ]}
     />

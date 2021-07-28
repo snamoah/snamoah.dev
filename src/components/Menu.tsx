@@ -7,6 +7,8 @@ import { Device } from '../utils/breakpoints'
 export interface MenuItemProps {
   name: ReactNode
   link: string
+  title?: string
+  ariaLabel?: string
 }
 
 export interface MenuProps {
@@ -56,10 +58,10 @@ const MenuComponent: React.FC<MenuProps> = ({
 
   return (
     <Menu {...menuProps}>
-      {items.map((menuItem, index) => (
+      {items.map(({ name, link, ...props }, index) => (
         <React.Fragment key={index}>
-          <MenuItem key={index} to={menuItem.link}>
-            {menuItem.name}
+          <MenuItem key={index} to={link} {...props}>
+            {name}
           </MenuItem>
 
           {dotted && index !== lastMenuItemIndex && <Dot />}
