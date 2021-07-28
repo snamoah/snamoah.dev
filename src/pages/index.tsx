@@ -9,7 +9,7 @@ import Menu from '../components/Menu'
 import { Device } from '../utils/breakpoints'
 import { globalStyles } from '../utils/styles'
 import { GraphqlQuery } from '../types/graphql'
-import { Github, LinkedIn, Twitter } from '../components/icons'
+import SocialLinks from '../components/SocialLinks'
 
 const Container = styled.div`
   display: flex;
@@ -75,7 +75,7 @@ const Content = styled.div`
 `
 
 const SubHeader = styled.p`
-  color: ${theme.colors.DARK_GREY};
+  color: ${theme.colors.DARKER_GREY};
 `
 
 const Footer = styled.footer`
@@ -158,32 +158,17 @@ const IndexPage = () => {
               items={[
                 {
                   name: 'Blog',
-                  link: '/blog',
+                  link: '/blog/',
                 },
                 {
                   name: 'Projects',
-                  link: '/projects',
+                  link: '/projects/',
                 },
               ]}
             />
           </Content>
           <Footer>
-            <Menu
-              items={[
-                {
-                  name: <Twitter />,
-                  link: site.twitterLink,
-                },
-                {
-                  name: <Github />,
-                  link: site.githubLink,
-                },
-                {
-                  name: <LinkedIn />,
-                  link: site.linkedInLink,
-                },
-              ]}
-            />
+            <SocialLinks />
           </Footer>
         </Main>
       </Container>
