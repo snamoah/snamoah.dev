@@ -103,7 +103,7 @@ const Actions = styled.div`
 const Projects: React.FC = () => {
   return (
     <>
-      <Seo siteTitle="Projects" />
+      <Seo slug="/projects/" title="Projects" />
       <Layout
         title={
           <h1>

@@ -66,7 +66,7 @@ const Blog: React.FC = () => {
   } = useStaticQuery<BlogPostsQuery>(query)
   return (
     <>
-      <Seo siteTitle="Blog" />
+      <Seo slug="/blog/" title="Blog" />
       <Layout
         title={
           <h1>

@@ -26,11 +26,13 @@ const Divider = styled.div`
 `
 
 interface BlogPostProps {
+  path: string
   data: {
     post: {
       frontmatter: {
         title: string
         date: string
+        description: string
       }
       timeToRead: number
       slug: string
@@ -46,18 +48,24 @@ export const query = graphql`
       timeToRead
       frontmatter {
         title
+        description
         date(formatString: "MMMM DD, YYYY")
       }
     }
   }
 `
 
-const BlogPost: React.FC<BlogPostProps> = ({ data }) => {
+const BlogPost: React.FC<BlogPostProps> = ({ data, path }) => {
   const { post } = data
 
   return (
     <>
-      <Seo />
+      <Seo
+        blog
+        slug={path}
+        title={post.frontmatter.title}
+        description={post.frontmatter.description}
+      />
       <Layout
         title={
           <>

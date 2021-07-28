@@ -28,17 +28,20 @@ const query = graphql`
 `
 
 interface SeoProps {
+  slug?: string
   blog?: boolean
-  siteTitle?: string
-  siteDescription?: string
-  siteImage?: string
+  title?: string
+  description?: string
+  image?: string
+  url?: string
 }
 
 const Seo: React.FC<SeoProps> = ({
+  slug,
   blog: isBlog,
-  siteTitle,
-  siteDescription,
-  siteImage,
+  title: siteTitle,
+  description: siteDescription,
+  image: siteImage,
 }) => {
   const {
     site: { siteMetadata: site },
@@ -51,9 +54,11 @@ const Seo: React.FC<SeoProps> = ({
   siteDescription = siteDescription || site.description
   siteImage = siteImage || site.image
 
-  const siteUrl = site.siteUrl
+  const siteUrl = slug ? `${site.siteUrl}${slug}` : site.siteUrl
+
   const keywords = site.keywords.join(' ')
 
+  const ogType = isBlog ? 'article' : 'website'
   return (
     <Helmet>
       <html lang={site.lang} />
@@ -61,11 +66,11 @@ const Seo: React.FC<SeoProps> = ({
 
       <meta name="description" content={siteDescription} />
       <meta name="keywords" content={keywords} />
-      <link rel="canonical" href={site.siteUrl} />
+      <link rel="canonical" href={siteUrl} />
 
       {/* Open Graph tags */}
       <meta name="og:site_name" content={siteTitle} />
-      <meta name="og:type" content="website" />
+      <meta name="og:type" content={ogType} />
       <meta name="og:title" content={siteTitle} />
       <meta name="og:description" content={siteDescription} />
       <meta name="og:image" content={siteImage} />
