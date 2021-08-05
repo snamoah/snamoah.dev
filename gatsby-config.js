@@ -59,5 +59,6 @@ module.exports = {
         path: `${__dirname}/content/posts`,
       },
     },
+    'gatsby-plugin-csp',
   ],
 }
