@@ -16,6 +16,12 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: 'Gruut',
+    description: 'A service to easily download content from Instagram',
+    previewLink: 'https://gruut.xyz',
+    githubLink: 'https://github.com/snamoah/gruut',
+  },
+  {
     name: 'Retrospective',
     description: 'A simple app to manage retrospective meetings within teams',
     githubLink: 'https://github.com/snamoah/retrospective',
