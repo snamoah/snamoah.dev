@@ -134,13 +134,11 @@ const Projects: React.FC = () => {
                 <Header to={landingPageLink}>{project.name}</Header>
                 <Body>{project.description}</Body>
 
-                {project.githubLink && (
-                  <Actions>
-                    <Link to={project.githubLink}>
-                      <Github />
-                    </Link>
-                  </Actions>
-                )}
+                <Actions>
+                  <Link to={project.githubLink}>
+                    <Github />
+                  </Link>
+                </Actions>
               </ProjectCard>
             )
           })}
