@@ -16,6 +16,12 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: 'Survey Fly',
+    description: 'An online platform for creating and managing surveys',
+    previewLink: 'https://survey-fly.com',
+    githubLink: 'https://github.com/snamoah/survey-fly',
+  },
+  {
     name: 'Gruut',
     description: 'A service to easily download content from Instagram',
     previewLink: 'https://gruut.xyz',
@@ -34,11 +40,11 @@ const projects: Project[] = [
     githubLink: 'https://github.com/snamoah/react-pdf-editor',
     previewLink: 'https://snamoah.github.io/react-pdf-editor',
   },
-  {
-    name: 'React Date-Time Range Picker',
-    description: 'A react component for selecting range of dates and times',
-    githubLink: 'https://github.com/snamoah/react-datetime-range-picker',
-  },
+  // {
+  //   name: 'React Date-Time Range Picker',
+  //   description: 'A react component for selecting range of dates and times',
+  //   githubLink: 'https://github.com/snamoah/react-datetime-range-picker',
+  // },
   {
     name: 'branchio-sdk',
     description: 'Un-official Node.js SDK for branch.io',
@@ -128,11 +134,13 @@ const Projects: React.FC = () => {
                 <Header to={landingPageLink}>{project.name}</Header>
                 <Body>{project.description}</Body>
 
-                <Actions>
-                  <Link to={project.githubLink}>
-                    <Github />
-                  </Link>
-                </Actions>
+                {project.githubLink && (
+                  <Actions>
+                    <Link to={project.githubLink}>
+                      <Github />
+                    </Link>
+                  </Actions>
+                )}
               </ProjectCard>
             )
           })}
